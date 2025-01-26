@@ -10,8 +10,6 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 
-import Image from "next/image";
-
 import {
   LayoutDashboard,
   Heart,

@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { User, LogOut, CreditCard } from "lucide-react";
+
 const Navbar = () => {
   return (
     <div className="w-full bg-black flex justify-between">
@@ -33,13 +35,16 @@ const Navbar = () => {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href="/profile">Profile</Link>
+            <User />
+            <Link href="/profile"> Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href="/signIn">Logout</Link>
+            <LogOut />
+            <Link href="/signIn"> Logout</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href="/billing">Subscription</Link>
+            <CreditCard />
+            <Link href="/billing"> Subscription</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
