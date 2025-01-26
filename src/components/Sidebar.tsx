@@ -17,6 +17,7 @@ import {
   User,
   CreditCard,
   Settings2,
+  MessageSquare
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -34,6 +35,11 @@ const Sidebar = () => {
         <CommandItem className="rounded-none">
           <Heart />
           <Link href="/favourite">Favourites</Link>
+        </CommandItem>
+        <CommandSeparator />
+        <CommandItem className="rounded-none">
+          <MessageSquare />
+          <Link href="/posts">Posts</Link>
         </CommandItem>
         <CommandSeparator />
         <CommandItem className="rounded-none">
