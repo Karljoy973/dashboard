@@ -1,7 +1,7 @@
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import { Newspaper, Users, Folders, MessageCircle } from "lucide-react";
-import Image from "next/image";
 import PostTable from "@/components/posts/PostTable";
+import AnalyticsChart from "@/components/dashboard/AnalyticsChart";
 
 export default function Home() {
   return (
@@ -28,7 +28,9 @@ export default function Home() {
           icon={<MessageCircle className="text-slate-500" size={72} />}
         />
       </div>
-      <PostTable title="latests Posts" />
+
+      <AnalyticsChart />
+      <PostTable title="latests Posts" limit={6} />
     </>
   );
 }

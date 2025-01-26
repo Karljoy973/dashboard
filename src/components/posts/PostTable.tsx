@@ -17,8 +17,12 @@ type PostTableProps = Partial<{
   title: string;
 }>;
 
+import { Pen } from "lucide-react";
 
 const PostTable = ({ limit, title }: PostTableProps) => {
+  let filteredSortedPosts: PostInterface[] = [...posts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit ? limit : posts.length);
   return (
     <div className="mt-10">
       <h3 className="text-2xl mb-4 font-semibold">{title ? title : "Posts"}</h3>
@@ -33,15 +37,28 @@ const PostTable = ({ limit, title }: PostTableProps) => {
             <TableHead className="hidden md:table-cell text-right">
               Date
             </TableHead>
+            <TableHead className="hidden md:table-cell text-right">
+              Edit
+            </TableHead>
           </TableRow>
-              </TableHeader>
-              <TableBody>
-                  {posts.map((post) => {
-                      <TableRow key={post.id}>
-                          <TableCell> {post.author} </TableCell>
-                      </TableRow>
-                  })}
-              </TableBody>
+        </TableHeader>
+        <TableBody>
+          {filteredSortedPosts.map((post) => (
+            <TableRow key={post.id}>
+              <TableCell> {post.author} </TableCell>
+              <TableCell> {post.body} </TableCell>
+              <TableCell> {post.author} </TableCell>
+              <TableCell> {post.date} </TableCell>
+              <TableCell>
+                <Link href={`/profile/edit/${post.id}`}>
+                  <button>
+                    <Pen size={15} />
+                  </button>
+                </Link>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
       </Table>
     </div>
   );

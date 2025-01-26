@@ -1,5 +1,5 @@
 import { PostInterface } from "@/types/posts";
-const posts = [
+const posts: PostInterface[] = [
   {
     id: "1",
     title: "The Rise of Artificial Intelligence",
