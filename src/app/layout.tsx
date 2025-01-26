@@ -32,7 +32,9 @@ export default function RootLayout({
           <Navbar />
           <div className="flex flex-row space-between justify-between">
             <Sidebar />
-            <div className="container">{children}</div>
+            <div className="container w-100 mx-10">
+              {children}
+            </div>
           </div>
         </div>
       </body>
