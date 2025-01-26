@@ -32,7 +32,6 @@ const Sidebar = () => {
         </CommandItem>
         <CommandSeparator />
         <CommandItem className="rounded-none">
-          {" "}
           <Heart />
           <Link href="/favourite">Favourites</Link>
         </CommandItem>

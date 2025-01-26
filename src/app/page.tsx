@@ -6,7 +6,6 @@ import PostTable from "@/components/posts/PostTable";
 export default function Home() {
   return (
     <>
-      
       <div className="flex flex-row p-5 m-5 sd:flex-col">
         <DashboardCard
           title="Posts"
@@ -29,7 +28,7 @@ export default function Home() {
           icon={<MessageCircle className="text-slate-500" size={72} />}
         />
       </div>
-      <PostTable />
+      <PostTable title="latests Posts" />
     </>
   );
 }
