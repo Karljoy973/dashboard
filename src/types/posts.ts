@@ -4,8 +4,8 @@ export interface PostInterface {
   body: string;
   author: string;
   date: string;
-    comments: PostComment[];
-    like: boolean
+  comments: PostComment[];
+  like: boolean;
 }
 
 export interface PostComment {

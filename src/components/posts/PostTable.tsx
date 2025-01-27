@@ -39,8 +39,8 @@ const PostTable = ({ limit, title }: PostTableProps) => {
             </TableHead>
             <TableHead className="hidden md:table-cell text-right">
               Edit
-                      </TableHead>
-                      <TableHead className="hidden md:table-cell text-right">
+            </TableHead>
+            <TableHead className="hidden md:table-cell text-right">
               Likes
             </TableHead>
           </TableRow>
@@ -51,19 +51,20 @@ const PostTable = ({ limit, title }: PostTableProps) => {
               <TableCell> {post.author} </TableCell>
               <TableCell> {post.body} </TableCell>
               <TableCell> {post.author} </TableCell>
-                  <TableCell> {post.date}
-                <Link href={`/profile/edit/${post.id}`}>
+              <TableCell>
+                {" "}
+                {post.date}
+                <Link href={`/posts/edit/${post.id}`}>
                   <button className="mx-4">
                     <Pen size={15} />
                   </button>
                 </Link>
-                  
-                  </TableCell>
-                  <TableCell>
-                      <Heart fill={post.like? "#cc1005":"" }/>
-                      {post.like} </TableCell>
-              <TableCell>
               </TableCell>
+              <TableCell>
+                <Heart fill={post.like ? "#cc1005" : ""} />
+                {post.like}{" "}
+              </TableCell>
+              <TableCell></TableCell>
             </TableRow>
           ))}
         </TableBody>

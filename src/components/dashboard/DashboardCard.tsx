@@ -12,7 +12,7 @@ import { Newspaper, Share, LucideIcon } from "lucide-react";
 interface DashboardCardProps {
   title: string;
   count: number;
-    icon: React.ReactElement<LucideIcon>;
+  icon: React.ReactElement<LucideIcon>;
 }
 
 const DashboardCard = ({ title, count, icon }: DashboardCardProps) => {

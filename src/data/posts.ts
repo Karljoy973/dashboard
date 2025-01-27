@@ -6,7 +6,7 @@ const posts: PostInterface[] = [
     body: "Artificial Intelligence (AI) is revolutionizing various industries...",
     author: "John Doe",
     date: "2024-05-01",
-    like:false, 
+    like: false,
     comments: [
       { id: "1", text: "Great introduction!", username: "Jane" },
       {
@@ -22,7 +22,7 @@ const posts: PostInterface[] = [
     body: "Quantum computing holds the potential to solve problems...",
     author: "Emily Smith",
     date: "2024-04-28",
-    like:false, 
+    like: false,
     comments: [
       { id: "1", text: "Fascinating read!", username: "Mark" },
       {
@@ -38,7 +38,7 @@ const posts: PostInterface[] = [
     body: "Blockchain technology is disrupting traditional industries...",
     author: "David Johnson",
     date: "2024-05-03",
-    like:false, 
+    like: false,
     comments: [
       { id: "1", text: "Blockchain has immense potential!", username: "Lucy" },
       {
@@ -54,7 +54,7 @@ const posts: PostInterface[] = [
     body: "Augmented Reality (AR) is changing the way we interact...",
     author: "Sophia Williams",
     date: "2024-05-05",
-    like:false, 
+    like: false,
     comments: [
       { id: "1", text: "AR applications are amazing!", username: "Grace" },
       {
@@ -70,7 +70,7 @@ const posts: PostInterface[] = [
     body: "The Internet of Things (IoT) is creating interconnected...",
     author: "Andrew Brown",
     date: "2024-05-08",
-    like:false, 
+    like: false,
     comments: [
       {
         id: "1",
@@ -90,7 +90,7 @@ const posts: PostInterface[] = [
     body: "5G technology promises faster speeds and lower latency...",
     author: "Emma Davis",
     date: "2024-05-10",
-    like:true, 
+    like: true,
     comments: [
       {
         id: "1",
@@ -110,7 +110,7 @@ const posts: PostInterface[] = [
     body: "As technology advances, cybersecurity becomes...",
     author: "Michael Johnson",
     date: "2024-05-12",
-    like:true, 
+    like: true,
     comments: [
       {
         id: "1",
@@ -126,7 +126,7 @@ const posts: PostInterface[] = [
     body: "Artificial Neural Networks (ANNs) are inspired by the...",
     author: "Isabella White",
     date: "2024-05-15",
-    like:false, 
+    like: false,
     comments: [
       {
         id: "1",
@@ -146,7 +146,7 @@ const posts: PostInterface[] = [
     body: "Cloud computing provides on-demand access to computing...",
     author: "James Taylor",
     date: "2024-05-18",
-    like:false, 
+    like: false,
     comments: [
       {
         id: "1",
@@ -166,7 +166,7 @@ const posts: PostInterface[] = [
     body: "Machine Learning (ML) algorithms enable computers...",
     author: "Ava Johnson",
     date: "2024-05-20",
-    like:false, 
+    like: false,
     comments: [
       { id: "1", text: "ML is reshaping industries.", username: "Emma" },
       {
