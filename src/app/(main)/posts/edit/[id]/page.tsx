@@ -15,26 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import BackButton from "@/components/BackButton";
-import posts from "@/data/posts";
-import { use } from "react";
+import posts, { formSchema } from "@/data/posts";
+import { useToast } from "@/hooks/use-toast";
 
-const formSchema = z.object({
-  title: z
-    .string({ description: "Form Title", required_error: "Empty Title Error" })
-    .min(1, "Empty Title Error"),
-  body: z
-    .string({ description: "Form body", required_error: "Empty body Error" })
-    .min(1, "Empty body Error"),
-  author: z
-    .string({
-      description: "Form author",
-      required_error: "Empty author Error",
-    })
-    .min(1, "Empty author Error"),
-  date: z
-    .string({ description: "Form date", required_error: "Empty date Error" })
-    .min(1, "Empty date Error"),
-});
 
 interface PostEditPageProps {
   params: {
@@ -42,10 +25,17 @@ interface PostEditPageProps {
   };
 }
 
-const handleSubmit = (data: z.infer<typeof formSchema>) => console.log(data);
 
 const EditPostPage = ({ params }: PostEditPageProps) => {
+  const {toast} = useToast()
   let post = posts.find((post) => post.id === params.id);
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    toast({
+      title: "Your post has been submitted", 
+      description: `Updated by ${post?.author} on ${post?.date}`
+    })
+    console.log(data);
+  }
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

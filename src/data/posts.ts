@@ -1,4 +1,5 @@
 import { PostInterface } from "@/types/posts";
+import * as z from "zod";
 const posts: PostInterface[] = [
   {
     id: "1",
@@ -177,5 +178,23 @@ const posts: PostInterface[] = [
     ],
   },
 ];
+
+export const formSchema = z.object({
+  title: z
+    .string({ description: "Form Title", required_error: "Empty Title Error" })
+    .min(1, "Empty Title Error"),
+  body: z
+    .string({ description: "Form body", required_error: "Empty body Error" })
+    .min(1, "Empty body Error"),
+  author: z
+    .string({
+      description: "Form author",
+      required_error: "Empty author Error",
+    })
+    .min(1, "Empty author Error"),
+  date: z
+    .string({ description: "Form date", required_error: "Empty date Error" })
+    .min(1, "Empty date Error"),
+});
 
 export default posts;
