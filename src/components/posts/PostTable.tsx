@@ -17,7 +17,7 @@ type PostTableProps = Partial<{
   title: string;
 }>;
 
-import { Pen } from "lucide-react";
+import { Pen, Heart } from "lucide-react";
 
 const PostTable = ({ limit, title }: PostTableProps) => {
   let filteredSortedPosts: PostInterface[] = [...posts]
@@ -39,6 +39,9 @@ const PostTable = ({ limit, title }: PostTableProps) => {
             </TableHead>
             <TableHead className="hidden md:table-cell text-right">
               Edit
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell text-right">
+              Likes
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -48,13 +51,18 @@ const PostTable = ({ limit, title }: PostTableProps) => {
               <TableCell> {post.author} </TableCell>
               <TableCell> {post.body} </TableCell>
               <TableCell> {post.author} </TableCell>
-              <TableCell> {post.date} </TableCell>
-              <TableCell>
+                  <TableCell> {post.date}
                 <Link href={`/profile/edit/${post.id}`}>
-                  <button>
+                  <button className="mx-4">
                     <Pen size={15} />
                   </button>
                 </Link>
+                  
+                  </TableCell>
+                  <TableCell>
+                      <Heart fill={post.like? "#cc1005":"" }/>
+                      {post.like} </TableCell>
+              <TableCell>
               </TableCell>
             </TableRow>
           ))}

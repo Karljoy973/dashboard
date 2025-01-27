@@ -17,12 +17,12 @@ import {
   User,
   CreditCard,
   Settings2,
-  MessageSquare
+  MessageSquare,
 } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <Command className="flex flex-col w-2xs h-full bg-white rounded-none ">
+    <Command className="flex flex-col h-full bg-white rounded-none ">
       <CommandInput placeholder="Search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
