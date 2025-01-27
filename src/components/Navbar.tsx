@@ -12,22 +12,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { User, LogOut, CreditCard } from "lucide-react";
+import ThemeToggler from "./ThemeToggler";
 
 const Navbar = () => {
   return (
     <div className="w-full bg-black flex justify-between">
-      <Image src={logo} alt="LG" width={40} />
 
+    <ThemeToggler/>
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Link href="/" />
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/shadcn.png"
-              className="border-none"
-            />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+          <Link href="/">
+      <Image src={logo} alt="LG" width={50} />
+          </Link>   
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>

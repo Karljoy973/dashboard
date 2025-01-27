@@ -23,7 +23,7 @@ export default function Home() {
           icon={<Users className="text-slate-500" size={72} />}
         />
         <DashboardCard
-          title="Clients"
+          title="Replies"
           count={40}
           icon={<MessageCircle className="text-slate-500" size={72} />}
         />

@@ -1,5 +1,8 @@
+import FavouritePostsTable from "@/components/posts/FavouritePosts";
+
+
 const FavouritePage = () => {
-  return <div>Posts</div>;
+  return <FavouritePostsTable title="You liked these posts !"/>;
 };
 
 export default FavouritePage;

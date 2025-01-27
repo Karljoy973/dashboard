@@ -31,16 +31,17 @@ const PostTable = ({ limit, title }: PostTableProps) => {
         <TableHeader>
           <TableRow>
             <TableHead>Title</TableHead>
-            <TableHead className="hidden md:table-cell text-right">
+            <TableHead>Description</TableHead>
+            <TableHead className="hidden md:table-cell ">
               Author
             </TableHead>
-            <TableHead className="hidden md:table-cell text-right">
+            <TableHead className="hidden md:table-cell ">
               Date
             </TableHead>
-            <TableHead className="hidden md:table-cell text-right">
+            <TableHead className="hidden md:table-cell ">
               Edit
             </TableHead>
-            <TableHead className="hidden md:table-cell text-right">
+            <TableHead className="hidden md:table-cell ">
               Likes
             </TableHead>
           </TableRow>
@@ -48,23 +49,25 @@ const PostTable = ({ limit, title }: PostTableProps) => {
         <TableBody>
           {filteredSortedPosts.map((post) => (
             <TableRow key={post.id}>
-              <TableCell> {post.author} </TableCell>
+              <TableCell> {post.title} </TableCell>
               <TableCell> {post.body} </TableCell>
               <TableCell> {post.author} </TableCell>
               <TableCell>
-                {" "}
+                
                 {post.date}
+              </TableCell>
+              <TableCell>
                 <Link href={`/posts/edit/${post.id}`}>
                   <button className="mx-4">
                     <Pen size={15} />
                   </button>
                 </Link>
+                
               </TableCell>
               <TableCell>
-                <Heart fill={post.like ? "#cc1005" : ""} />
-                {post.like}{" "}
+              <Heart fill={post.like ? "#cc1005" : ""} />
+              {post.like}
               </TableCell>
-              <TableCell></TableCell>
             </TableRow>
           ))}
         </TableBody>
