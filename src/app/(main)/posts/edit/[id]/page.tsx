@@ -70,7 +70,7 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
               <FormItem>
                     <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70">{post?.author }</FormLabel>
                 <FormControl>
-                  <Input className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Edit title" {...field} />
+                  <Input className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update title" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,7 +83,7 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
               <FormItem>
                     <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Enter Body" {...field} />
+                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Body" {...field} />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
@@ -92,12 +92,12 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
                   />
                           <FormField
             control={postform.control}
-            name="body"
+            name="author"
             render={({ field }) => (
               <FormItem>
                     <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Enter Body" {...field} />
+                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Author" {...field} />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
@@ -106,18 +106,20 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
                   />
                           <FormField
             control={postform.control}
-            name="body"
+            name="date"
             render={({ field }) => (
               <FormItem>
                     <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Enter Body" {...field} />
+                        <Textarea
+                            className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Date" {...field} />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
                 
             )}
-          />
+                  />
+                  <Button className="w-full bg-slate-700 dark:bg-slate-400 text-white dark:text-gray-800">Update Post</Button>
         </form>
       </Form>
     </>
