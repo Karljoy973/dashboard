@@ -1,9 +1,8 @@
-import RegisterForm from "@/components/login/RegisteForm";
 
 const SignInPage = () => (
   <>
     <div>
-      <RegisterForm />
+      Sign In
     </div>
   </>
 );
