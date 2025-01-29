@@ -1,10 +1,8 @@
+import AuthForm from "@/components/login/AuthForm";
 
-const SignInPage = () => (
-  <>
-    <div>
-      Sign In
-    </div>
-  </>
-);
+
+
+const SignInPage = () => <><AuthForm /></>
+
 
 export default SignInPage;

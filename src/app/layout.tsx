@@ -1,4 +1,3 @@
-import SignInPage from "@/app/(auth)/signIn/page"
 import Navbar from "@/components/Navbar";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -38,12 +37,11 @@ export default function AuthLayout({
           storageKey="dashboard-theme"
         >
           <div>
-          <Navbar />
-              <div className="p-5 w-full md:max-w-[1140px]">{children}</div>
-            </div>
+            <Navbar />
+            <div className="p-5 w-full md:max-w-[1140px]">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
