@@ -26,24 +26,9 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableColorScheme
-          enableSystem={false}
-          storageKey="dashboard-theme"
-        >
-          <div>
-          <Navbar />
+   
               <div className="p-5 w-full md:max-w-[1140px]">{children}</div>
-            </div>
-        </ThemeProvider>
-      </body>
-    </html>
+      
   );
 }
 
