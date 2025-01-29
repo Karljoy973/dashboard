@@ -17,13 +17,12 @@ import ThemeToggler from "./ThemeToggler";
 const Navbar = () => {
   return (
     <div className="w-full bg-black flex justify-between">
-
-    <ThemeToggler/>
+      <ThemeToggler />
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Link href="/">
-      <Image src={logo} alt="LG" width={50} />
-          </Link>   
+            <Image src={logo} alt="LG" width={50} />
+          </Link>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>

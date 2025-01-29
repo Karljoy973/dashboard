@@ -18,24 +18,22 @@ import BackButton from "@/components/BackButton";
 import posts, { formSchema } from "@/data/posts";
 import { useToast } from "@/hooks/use-toast";
 
-
 interface PostEditPageProps {
   params: {
     id: string;
   };
 }
 
-
 const EditPostPage = ({ params }: PostEditPageProps) => {
-  const {toast} = useToast()
-  let post = posts.find((post) => post.id === params.id);
+  const { toast } = useToast();
+  const post = posts.find((post) => post.id === params.id);
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
     toast({
-      title: "Your post has been submitted", 
-      description: `Updated by ${post?.author} on ${post?.date}`
-    })
+      title: "Your post has been submitted",
+      description: `Updated by ${post?.author} on ${post?.date}`,
+    });
     console.log(data);
-  }
+  };
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,58 +56,74 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                    <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70">{post?.author }</FormLabel>
+                <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70">
+                  {post?.author}
+                </FormLabel>
                 <FormControl>
-                  <Input className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update title" {...field} />
+                  <Input
+                    className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                    placeholder="Update title"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
-                  />
-                  <FormField
+          />
+          <FormField
             control={postform.control}
             name="body"
             render={({ field }) => (
               <FormItem>
-                    <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
+                <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Body" {...field} />
+                  <Textarea
+                    className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                    placeholder="Update Body"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-                </FormItem>
-                
+              </FormItem>
             )}
-                  />
-                          <FormField
+          />
+          <FormField
             control={postform.control}
             name="author"
             render={({ field }) => (
               <FormItem>
-                    <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
+                <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                  <Textarea className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Author" {...field} />
+                  <Textarea
+                    className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                    placeholder="Update Author"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-                </FormItem>
-                
+              </FormItem>
             )}
-                  />
-                          <FormField
+          />
+          <FormField
             control={postform.control}
             name="date"
             render={({ field }) => (
               <FormItem>
-                    <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
+                <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70"></FormLabel>
                 <FormControl>
-                        <Textarea
-                            className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible" placeholder="Update Date" {...field} />
+                  <Textarea
+                    className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                    placeholder="Update Date"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-                </FormItem>
-                
+              </FormItem>
             )}
-                  />
-                  <Button className="w-full bg-slate-700 dark:bg-slate-400 text-white dark:text-gray-800">Update Post</Button>
+          />
+          <Button className="w-full bg-slate-700 dark:bg-slate-400 text-white dark:text-gray-800">
+            Update Post
+          </Button>
         </form>
       </Form>
     </>

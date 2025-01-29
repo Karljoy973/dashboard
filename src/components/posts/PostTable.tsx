@@ -20,7 +20,7 @@ type PostTableProps = Partial<{
 import { Pen, Heart } from "lucide-react";
 
 const PostTable = ({ limit, title }: PostTableProps) => {
-  let filteredSortedPosts: PostInterface[] = [...posts]
+  const filteredSortedPosts: PostInterface[] = [...posts]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit ? limit : posts.length);
   return (
@@ -32,18 +32,10 @@ const PostTable = ({ limit, title }: PostTableProps) => {
           <TableRow>
             <TableHead>Title</TableHead>
             <TableHead>Description</TableHead>
-            <TableHead className="hidden md:table-cell ">
-              Author
-            </TableHead>
-            <TableHead className="hidden md:table-cell ">
-              Date
-            </TableHead>
-            <TableHead className="hidden md:table-cell ">
-              Edit
-            </TableHead>
-            <TableHead className="hidden md:table-cell ">
-              Likes
-            </TableHead>
+            <TableHead className="hidden md:table-cell ">Author</TableHead>
+            <TableHead className="hidden md:table-cell ">Date</TableHead>
+            <TableHead className="hidden md:table-cell ">Edit</TableHead>
+            <TableHead className="hidden md:table-cell ">Likes</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -52,21 +44,17 @@ const PostTable = ({ limit, title }: PostTableProps) => {
               <TableCell> {post.title} </TableCell>
               <TableCell> {post.body} </TableCell>
               <TableCell> {post.author} </TableCell>
-              <TableCell>
-                
-                {post.date}
-              </TableCell>
+              <TableCell>{post.date}</TableCell>
               <TableCell>
                 <Link href={`/posts/edit/${post.id}`}>
                   <button className="mx-4">
                     <Pen size={15} />
                   </button>
                 </Link>
-                
               </TableCell>
               <TableCell>
-              <Heart fill={post.like ? "#cc1005" : ""} />
-              {post.like}
+                <Heart fill={post.like ? "#cc1005" : ""} />
+                {post.like}
               </TableCell>
             </TableRow>
           ))}

@@ -23,7 +23,10 @@ import {
 const Sidebar = () => {
   return (
     <Command className="flex flex-col h-full dark:text-slate-300 bg-clip-padding dark:bg-[#09090b] bg-slate-100 text-slate-700 w-full rounded-none ">
-      <CommandInput placeholder="Search..." className="dark:text-slate-300 bg-clip-padding dark:bg-[#09090b] bg-slate-100 text-slate-700 w-full rounded-none" />
+      <CommandInput
+        placeholder="Search..."
+        className="dark:text-slate-300 bg-clip-padding dark:bg-[#09090b] bg-slate-100 text-slate-700 w-full rounded-none"
+      />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandSeparator />
