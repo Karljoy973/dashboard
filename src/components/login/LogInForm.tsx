@@ -13,61 +13,104 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import BackButton from "@/components/BackButton";
-import posts, { formSchema } from "@/data/posts";
-import { useToast } from "@/hooks/use-toast";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 
 interface PostEditPageProps {
   params: {
     id: string;
   };
 }
-const post = posts.find((post) => {});
-const { toast } = useToast();
-const handleSubmit = (data: z.infer<typeof formSchema>) => {
-  toast({
-    title: "Your post has been submitted",
-    description: `Updated by ${post?.author} on ${post?.date}`,
-  });
-  console.log(data);
-};
-const form = useForm<z.infer<typeof formSchema>>({
-  resolver: zodResolver(formSchema),
-  defaultValues: {
-    title: post?.title || "",
-    body: post?.body || "",
-    author: post?.author || "",
-    date: post?.date || "",
-  },
+const formSchema = z.object({
+  email: z.string().min(3, { message: "Please enter a valid email address" }),
+  password: z.string().min(2, { message: "Please provide a valid password" }),
 });
 
-const postform = useForm();
-
 const LogInForm = () => {
+  const router = useRouter();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-    return (<><Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-          <FormField
-            control={postform.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="uppercase text-lg font-bold text-zinc-500 dark:bg-slate-700 dark:text-secondary/70">
-                  {post?.author}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
-                    placeholder="Update title"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-        /></form>
-    </Form></>  );
-}
- 
+  const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    router.push("/", { scroll: true });
+    console.log(data);
+  };
+  const redirect = () => router.push("/")
+
+  return (
+    <>
+      <Card>
+      <CardHeader>
+        <CardTitle>Log into your account using your SSO</CardTitle>
+      </CardHeader>
+        <CardContent className="grid grid-cols-2 w-[80%]">
+                <Button className="mx-2" onClick={redirect}>Google</Button> <Button className="mx-2" onClick={redirect}>GitHub</Button>
+        </CardContent>
+
+        
+          <CardDescription className="flex items-center justify-center">
+          ----- or with your credentials -----
+          </CardDescription>
+        
+        <CardContent className="space-y-2">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)}>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="uppercase text-lg font-bold text-zinc-500  dark:text-slate-400">Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                        placeholder="Enter email"
+                        type="email"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="uppercase text-lg font-bold text-zinc-500  dark:text-slate-400">Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-slate-100 border-0 focus-vidsible:ring-0 text-black dark:text-white focus-visible:ring-offset-visible"
+                        placeholder="Update title"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button className="w-full my-4">LogIn</Button>
+            </form>
+          </Form>
+        </CardContent>
+          
+      </Card>
+    </>
+  );
+};
+
 export default LogInForm;
