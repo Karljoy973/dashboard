@@ -12,6 +12,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(process.env.HELLO)
   return (
     <div className="flex">
       <div className="hidden md:block h-[100vh] w-[300px]">

@@ -1,17 +1,16 @@
 import {
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-  Table,
+	TableHeader,
+	TableBody,
+	TableHead,
+	TableRow,
+	TableCell,
+	TableCaption,
+	Table,
 } from "@/components/ui/table";
 
 import Link from "next/link";
 import posts from "@/data/posts";
-import { PostComment, PostInterface } from "@/types/posts";
+import { PostInterface } from "@/types/posts";
 type PostTableProps = Partial<{
   limit: number;
   title: string;

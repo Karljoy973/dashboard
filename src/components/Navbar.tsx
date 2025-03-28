@@ -1,7 +1,6 @@
 import Link from "next/link";
 import logo from "../../public/logo.png";
 import Image from "next/image";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,

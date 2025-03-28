@@ -4,30 +4,23 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import BackButton from "@/components/BackButton";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 
-interface PostEditPageProps {
-  params: {
-    id: string;
-  };
-}
 const formSchema = z.object({
   email: z.string().min(3, { message: "Please enter a valid email address" }),
   password: z.string().min(2, { message: "Please provide a valid password" }),

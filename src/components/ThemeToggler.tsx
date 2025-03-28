@@ -10,6 +10,7 @@ const ThemeToggler = () => {
   const handleToggle = (e: boolean | ((prevState: boolean) => boolean)) => {
     toggle ? setTheme("dark") : setTheme("light");
     setToggle(e);
+    return e;
   };
   return (
     <div className="p-4 space-y-4">
