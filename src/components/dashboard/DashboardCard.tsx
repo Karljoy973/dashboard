@@ -10,17 +10,17 @@ interface DashboardCardProps {
 
 const DashboardCard = ({ title, count, icon }: DashboardCardProps) => {
   return (
-    <Card className="w-3xs mb-4 mx-4 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-4 pb-0">
-      <CardHeader className="antialiased text-nowrap font-serif text-slate-900 dark:text-slate-200 font-bold text-2xl">
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex p-2 mx-4">
-        {icon}
-        <h3 className="text-5xl font-semibold dark:text-slate-200 text-slate-500">
-          {count}
-        </h3>
-      </CardContent>
-    </Card>
+		<Card className="w-fit mb-4 mx-4 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 p-4 pb-0">
+			<CardHeader className="antialiased text-nowrap font-serif text-slate-900 dark:text-slate-200 font-bold text-2xl">
+				<CardTitle>{title}</CardTitle>
+			</CardHeader>
+			<CardContent className="flex p-2 mx-4">
+				{icon}
+				<h3 className="text-5xl font-semibold dark:text-slate-200 text-slate-500">
+					{count}
+				</h3>
+			</CardContent>
+		</Card>
   );
 };
 
