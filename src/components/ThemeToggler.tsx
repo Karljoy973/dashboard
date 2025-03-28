@@ -7,11 +7,12 @@ import { useState } from "react";
 const ThemeToggler = () => {
   const [toggle, setToggle] = useState(true);
   const { setTheme } = useTheme();
-  const handleToggle = (e: boolean | ((prevState: boolean) => boolean)) => {
-    toggle ? setTheme("dark") : setTheme("light");
-    setToggle(e);
-    return e;
+
+  const handleToggle = (isChecked: boolean) => {
+    setToggle(isChecked);
+    setTheme(isChecked ? "light" : "dark");
   };
+
   return (
     <div className="p-4 space-y-4">
       <div className="flex items-center space-x-2">

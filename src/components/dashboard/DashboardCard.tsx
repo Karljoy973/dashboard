@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Newspaper, Share, LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface DashboardCardProps {
   title: string;
