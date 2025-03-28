@@ -9,11 +9,6 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const ignoreFiles = {
-  ignorePatterns: [
-    "*/hooks/use-toast.tsx"
-  ]
-}
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),

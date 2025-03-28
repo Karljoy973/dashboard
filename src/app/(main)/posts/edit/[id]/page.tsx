@@ -1,4 +1,5 @@
-"use client";
+"use client";;
+import { use } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,22 +19,23 @@ import posts, { formSchema } from "@/data/posts";
 import { useToast } from "@/hooks/use-toast";
 
 type PostEditPageProps = {
-	params: {
+	params: Promise<{
 		id: string;
-	};
+	}>;
 };
 
-const EditPostPage = ({ params }: PostEditPageProps) => {
-	const { toast } = useToast();
-	const post = posts.find((post) => post.id === params.id);
-	const handleSubmit = (data: z.infer<typeof formSchema>) => {
+const EditPostPage = (props: PostEditPageProps) => {
+    const params = use(props.params);
+    const { toast } = useToast();
+    const post = posts.find((post) => post.id === params.id);
+    const handleSubmit = (data: z.infer<typeof formSchema>) => {
 		toast({
 			title: "Your post has been submitted",
 			description: `Updated by ${post?.author} on ${post?.date}`,
 		});
 		console.log(data);
 	};
-	const form = useForm<z.infer<typeof formSchema>>({
+    const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			title: post?.title || "",
@@ -43,8 +45,8 @@ const EditPostPage = ({ params }: PostEditPageProps) => {
 		},
 	});
 
-	const postform = useForm();
-	return (
+    const postform = useForm();
+    return (
 		<>
 			<BackButton link="/posts" text="Previous Post" />
 			<h3 className="text-4xl mb-4">Edit Post</h3>
