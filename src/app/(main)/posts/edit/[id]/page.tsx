@@ -3,6 +3,7 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { PageProps } from "../../../../../../.next/types/app/(main)/posts/edit/[id]/page";
 import {
 	Form,
 	FormControl,
@@ -17,9 +18,15 @@ import BackButton from "@/components/BackButton";
 import posts, { formSchema } from "@/data/posts";
 import { useToast } from "@/hooks/use-toast";
 
-const EditPostPage = ({ params }: any) => {
+interface PostEditPageProps extends PageProps {
+	postEditParams: {
+		id: string;
+	};
+}
+
+const EditPostPage = ({ postEditParams }: PostEditPageProps) => {
 	const { toast } = useToast();
-	const post = posts.find((post) => post.id === params.id);
+	const post = posts.find((post) => post.id === postEditParams.id);
 	const handleSubmit = (data: z.infer<typeof formSchema>) => {
 		toast({
 			title: "Your post has been submitted",
