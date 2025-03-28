@@ -24,7 +24,7 @@ interface PostEditPageProps extends PageProps {
 	};
 }
 
-const EditPostPage = ({ postEditParams }: PostEditPageProps) => {
+export default function EditPostPage({ postEditParams }: PostEditPageProps) {
 	const { toast } = useToast();
 	const post = posts.find((post) => post.id === postEditParams.id);
 	const handleSubmit = (data: z.infer<typeof formSchema>) => {
@@ -132,4 +132,3 @@ const EditPostPage = ({ postEditParams }: PostEditPageProps) => {
 	);
 };
 
-export default EditPostPage;
