@@ -10,16 +10,17 @@ import {
 
 import Link from "next/link";
 import posts from "@/data/posts";
-import { PostInterface } from "@/types/posts";
 type PostTableProps = Partial<{
-  limit: number;
-  title: string;
+	limit: number;
+	title: string;
 }>;
 
 import { Pen, Heart } from "lucide-react";
+import { PostInterface } from "@/types/types";
 
-const PostTable = ({ limit, title }: PostTableProps) => {
+const PostTable = async ({ limit, title }: PostTableProps) => {
 	//TODO - Fetch data puis les sort
+
 	const filteredSortedPosts: PostInterface[] = [...posts]
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 		.slice(0, limit ? limit : posts.length);

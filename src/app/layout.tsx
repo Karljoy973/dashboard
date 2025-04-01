@@ -36,7 +36,7 @@ export default function AuthLayout({
 					storageKey="dashboard-theme">
 					<div>
 						<Navbar />
-						<div className="p-5 lg:w-[1140px] flex sm:flex-col">
+						<div className="p-5 w-full flex sm:flex-col">
 							{children}
 						</div>
 					</div>

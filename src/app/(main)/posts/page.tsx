@@ -4,10 +4,10 @@ import PostTable from "@/components/posts/PostTable";
 
 const PostPage = () => {
   return (
-    <>
-      <PostTable />
-      <PaginationPosts />
-    </>
+		<div className="flex flex-col ">
+			<PostTable />
+			<PaginationPosts />
+		</div>
   );
 };
 

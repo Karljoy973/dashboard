@@ -5,7 +5,7 @@ import AnalyticsChart from "@/components/dashboard/AnalyticsChart";
 
 export default function Home() {
   return (
-		<>
+		<div className="flex flex-col">
 			<div className="flex lg:flex-row  w-max p-5 m-5 max-lg:flex-col">
 				<DashboardCard
 					title="Posts"
@@ -33,6 +33,6 @@ export default function Home() {
 
 			<AnalyticsChart />
 			<PostTable title="latests Posts" limit={6} />
-		</>
+		</div>
   );
 }

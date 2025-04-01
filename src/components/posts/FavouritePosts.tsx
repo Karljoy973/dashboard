@@ -7,108 +7,89 @@ import {
   TableCaption,
   Table,
 } from "@/components/ui/table";
+import { PostTableProps, PostsData, AuthorData } from "@/types/types";
 
 import { Heart } from "lucide-react";
-
-type PostTableProps = Partial<{
-	limit: number;
-	title: string;
-}>;
-
-// type PostsData = {
-// 	id: number;
-// 	title: string;
-// 	body: string;
-// 	authorId: number;
-// 	dateTime: string;
-// 	isliked: boolean;
-// };
-
-// type JSONPostsResponse = {
-// 	data: PostsData;
-// 	fetchError: Error;
-// };
-
-// const fetchPostsData = async () => {
-// 	const PostData = await fetch(
-// 		"https://dashboard-backend-flame.vercel.app/posts"
-// 	);
-
-// 	const { data, fetchError }: JSONPostsResponse = await PostData.json();
-// 	if (!!fetchError) return Error("Internal Error");
-// 	return data;
-// };
+import { API_BASE_PATH, POSTS_ENDPOINT, AUTHORS_ENDPOINT } from "@/constants";
 
 const FavouritePostsTable = async ({ title }: PostTableProps) => {
-	//TODO - Fetch data
-	const PostData = await fetch(
-		"https://dashboard-backend-flame.vercel.app/posts"
-	);
+	const [fetchedPosts, fetchedAuthors] = await Promise.allSettled([
+		fetch(`${API_BASE_PATH}${POSTS_ENDPOINT}`),
+		fetch(`${API_BASE_PATH}${AUTHORS_ENDPOINT}`),
+	]);
 
-	const fetchedPosts: {
-		id: number;
-		title: string;
-		body: string;
-		authorid: number;
-		dateTime: string;
-		isliked: boolean;
-		comment_list_id: number[];
-	}[] = await PostData.json();
-
-	const likedFetchedPosts = fetchedPosts.filter((e) => e.isliked);
-
-	const AuthorData = await fetch(
-		"https://dashboard-backend-flame.vercel.app/authors"
-	);
-	const fetchedAuthors: { id: number; username: string }[] =
-		await AuthorData.json();
-	const temp = fetchedAuthors.map((author) =>
-		fetchedPosts.find((post) => post.authorid == author.id)
-	);
-	console.log(temp);
-	return (
-		<div className="mt-10">
-			<h3 className="text-2xl mb-4 font-semibold">
-				{title ? title : "Posts"}
-			</h3>
-			<Table>
-				<TableCaption>List of recent posts</TableCaption>
-				<TableHeader>
-					<TableRow>
-						<TableHead>Title</TableHead>
-						<TableHead>Description</TableHead>
-						<TableHead className="hidden md:table-cell">
-							Author
-						</TableHead>
-						<TableHead className="hidden md:table-cell text-right">
-							Date
-						</TableHead>
-						<TableHead className="hidden md:table-cell">
-							Likes
-						</TableHead>
-					</TableRow>
-				</TableHeader>
-				<TableBody>
-					{likedFetchedPosts.map((post) => (
-						<TableRow key={post.id}>
-							<TableCell> {post.title}</TableCell>
-							<TableCell> {post.body} </TableCell>
-							<TableCell> {`${post.authorid}`} </TableCell>
-							<TableCell className="flex flex-grow">
-								{" "}
-								{post.dateTime}{" "}
-							</TableCell>
-							<TableCell>
-								<Heart fill="#cc1005" />
-								{post.isliked}
-							</TableCell>
-							<TableCell></TableCell>
+	try {
+		if (
+			fetchedAuthors.status == "rejected" ||
+			fetchedPosts.status == "rejected"
+		) {
+			throw new Error("Server Error please reload the page or try later");
+		}
+		const posts: PostsData[] = await fetchedPosts.value.json();
+		const likedPosts = posts.filter((post) => post.isliked);
+		const authors: AuthorData[] = await fetchedAuthors.value.json();
+		return (
+			<div className="mt-10">
+				<h3 className="text-2xl mb-4 font-semibold">
+					{title ? title : "Posts"}
+				</h3>
+				<Table className="w-11/12">
+					<TableCaption>List of recent posts</TableCaption>
+					<TableHeader>
+						<TableRow>
+							<TableHead>Title</TableHead>
+							<TableHead>Description</TableHead>
+							<TableHead className="hidden md:table-cell">
+								Author
+							</TableHead>
+							<TableHead className="hidden md:table-cell text-right min-w-40">
+								Date
+							</TableHead>
+							<TableHead className="hidden md:table-cell">
+								Likes
+							</TableHead>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</div>
-	);
+					</TableHeader>
+					<TableBody>
+						{likedPosts.map((post) => (
+							<TableRow key={post.id}>
+								<TableCell> {post.title}</TableCell>
+								<TableCell> {post.body} </TableCell>
+								<TableCell>
+									{" "}
+									{
+										authors.find(
+											(author) =>
+												author.id == post.authorid
+										)!.username
+									}{" "}
+								</TableCell>
+								<TableCell className="flex flex-grow">
+									{" "}
+									{new Date(
+										post.datetime
+									).toDateString()}{" "}
+								</TableCell>
+								<TableCell>
+									<Heart fill="#cc1005" />
+									{post.isliked}
+								</TableCell>
+								<TableCell></TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</div>
+		);
+	} catch (error) {
+		return (
+			<>
+				<div>
+					<b>Server Error please reload the page or try later ...</b>
+				</div>
+			</>
+		);
+	}
 };
 
 export default FavouritePostsTable;
