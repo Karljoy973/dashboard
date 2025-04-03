@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard Next.js avec Neon DB
 
-## Getting Started
+![Aperçu du Dashboard](./image.png)
 
-First, run the development server:
+## Description
+Ce projet est un **dashboard interactif** développé avec **Next.js** et **Neon DB**. Il permet d'afficher des statistiques et des données dynamiques sur une interface moderne et responsive.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Fonctionnalités
+- 🔍 **Tableau de bord dynamique** avec des graphiques interactifs.
+- 🔐 **Authentification utilisateur** pour un accès sécurisé.
+- 📅 **Gestion des posts et des clients**.
+- 📈 **Visualisation des données en temps réel** avec Neon DB.
+- 🎨 **Mode sombre et clair** pour une meilleure expérience utilisateur.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Utilisées
+- **Next.js** - Framework React moderne pour le rendu côté serveur et client.
+- **Neon DB** - Base de données PostgreSQL performante et scalable.
+- **Tailwind CSS** - Pour une interface utilisateur fluide et moderne.
+- **Recharts** - Pour les visualisations de données interactives.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
+1. Clonez le répertoire :
+   ```bash
+   git clone https://github.com/votre-utilisateur/dashboard.git
+   cd dashboard
+   ```
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
+3. Configurez l'environnement en créant un fichier `.env.local` :
+   ```env
+   DATABASE_URL=postgres://user:password@neon-database-url/dbname
+   NEXT_PUBLIC_API_KEY=votre_api_key
+   ```
+4. Démarrez le projet :
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Aperçu
+Une fois le projet lancé, accédez à `http://localhost:3000` pour voir le dashboard en action.
 
-## Learn More
+## Contributions
+Les contributions sont les bienvenues ! Créez une issue ou soumettez une pull request si vous souhaitez améliorer le projet.
 
-To learn more about Next.js, take a look at the following resources:
+## Licence
+Ce projet est sous licence MIT.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
+> **Auteur : Karl JOYEUX [linkedin](www.linkedin.com/in/karl-joyeux)** 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
