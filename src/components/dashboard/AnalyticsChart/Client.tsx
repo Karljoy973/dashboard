@@ -38,12 +38,15 @@ const AnalyticsChartClient = (data : AnalyticsItem[]|Error) => {
 		);
 	}
 
-	if (data instanceof Error) {
+    if (data instanceof Error) {
+		setLoading(false);
 		return (
 			<Card>
 				<CardHeader>
 					<CardTitle>Erreur</CardTitle>
-					<CardDescription>Impossible de récupérer les données</CardDescription>
+					<CardDescription>
+						Impossible de récupérer les données
+					</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<p className="text-red-500">{data.message}</p>

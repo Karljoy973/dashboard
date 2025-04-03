@@ -82,6 +82,7 @@ const FavouritePostsTable = async ({ title }: PostTableProps) => {
 			</div>
 		);
 	} catch (error) {
+		console.log(error);
 		return (
 			<>
 				<div>
