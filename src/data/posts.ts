@@ -1,4 +1,4 @@
-import { PostInterface } from "@/types/posts";
+import { PostInterface } from "@/types/types";
 import * as z from "zod";
 const posts: PostInterface[] = [
   {
