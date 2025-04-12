@@ -31,7 +31,9 @@ const EditPostPage = (props: PostEditPageProps) => {
     const handleSubmit = (data: z.infer<typeof formSchema>) => {
 		toast({
 			title: "Your post has been submitted",
-			description: `Updated by ${post?.author} on ${post?.date}`,
+			description: `Updated by ${post.author ?? data.author} on ${
+				post.date ?? data.date
+			}`,
 		});
 		console.log(`${data}`);
 	};
