@@ -33,6 +33,7 @@ const EditPostPage = (props: PostEditPageProps) => {
 			title: "Your post has been submitted",
 			description: `Updated by ${post?.author} on ${post?.date}`,
 		});
+		console.log(`${data}`);
 	};
     const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
