@@ -1,6 +1,6 @@
 # Dashboard Next.js avec Neon DB
 
-![Aperçu du Dashboard](./image.png)
+![Aperçu du Dashboard](./dashboard.png)
 
 ## Description
 Ce projet est un **dashboard interactif** développé avec **Next.js** et **Neon DB**. Il permet d'afficher des statistiques et des données dynamiques sur une interface moderne et responsive.
