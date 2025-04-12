@@ -1,10 +1,10 @@
+import { ANALYTICS, API_BASE_PATH } from "@/constants";
 import AnalyticsChartClient from "./Client";
-import { ANALYTICS_ENDPOINT, API_BASE_PATH } from "../../../../.env";
 import { AnalyticsItem } from "@/types/types";
 
 const fetchAnalytics = async (): Promise<AnalyticsItem[] | Error> => {
 	try {
-		const res = await fetch(`${API_BASE_PATH}${ANALYTICS_ENDPOINT}`);
+		const res = await fetch(`${API_BASE_PATH}${ANALYTICS}`);
 
 		if (res.ok) {
 			const data = await res.json();
@@ -22,8 +22,8 @@ const fetchAnalytics = async (): Promise<AnalyticsItem[] | Error> => {
 };
 
 const AnalyticsChartServer = async () => {
-    const data = await fetchAnalytics();
-    return <AnalyticsChartClient {...data} />;
+	const data = await fetchAnalytics();
+	return <AnalyticsChartClient {...data} />;
 };
 
 export default AnalyticsChartServer;
