@@ -1,4 +1,5 @@
-export const API_BASE_PATH = "https://dashboard-backend-flame.vercel.app"
-export const POSTS_ENDPOINT = "/posts"
-export const AUTHORS_ENDPOINT = "/authors"
-export const ANALYTICS_ENDPOINT = "/analytics"
+import "./envConfig.ts";
+
+export const API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH; 
+export const POSTS = process.env.NEXT_PUBLIC_POSTS_ENDPOINT; 
+export const AUTHORS = process.env.NEXT_PUBLIC_AUTHORS_ENDPOINT

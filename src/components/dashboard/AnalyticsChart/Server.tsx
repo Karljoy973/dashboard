@@ -1,31 +1,23 @@
 import AnalyticsChartClient from "./Client";
-import { ANALYTICS_ENDPOINT, API_BASE_PATH } from "@/constants";
+import { ANALYTICS_ENDPOINT, API_BASE_PATH } from "../../../../.env";
 import { AnalyticsItem } from "@/types/types";
 
 const fetchAnalytics = async (): Promise<AnalyticsItem[] | Error> => {
 	try {
-		const [res] = await Promise.allSettled([fetch(`${API_BASE_PATH}${ANALYTICS_ENDPOINT}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-            },
-            cache: "no-store"
-		})]) 
+		const res = await fetch(`${API_BASE_PATH}${ANALYTICS_ENDPOINT}`);
 
-		if (res.status == 'fulfilled') {
-            const data = await res.value.json()
-            console.log(data)
-            return data
-        }
-        
-        else {
-            const errorText = await res.reason;
-            console.error("API Error Response:", errorText);
-            return new Error(`Erreur: ${res.status} - ${errorText}`)
-        }
+		if (res.ok) {
+			const data = await res.json();
+			console.log(data);
+			return data;
+		} else {
+			const errorText = res.statusText;
+			console.error("API Error Response:", errorText);
+			return new Error(`Erreur: ${res.status} - ${errorText}`);
+		}
 	} catch (err) {
 		console.error("Fetch error:", err);
-		return new Error(`Erreur: API Error Response`)
+		return new Error(`Erreur: API Error Response`);
 	}
 };
 

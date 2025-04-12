@@ -10,12 +10,12 @@ import {
 import { PostTableProps, PostsData, AuthorData } from "@/types/types";
 
 import { Heart } from "lucide-react";
-import { API_BASE_PATH, POSTS_ENDPOINT, AUTHORS_ENDPOINT } from "@/constants";
+import { API_BASE_PATH, AUTHORS, POSTS } from "@/constants.js";
 
 const FavouritePostsTable = async ({ title }: PostTableProps) => {
 	const [fetchedPosts, fetchedAuthors] = await Promise.allSettled([
-		fetch(`${API_BASE_PATH}${POSTS_ENDPOINT}`),
-		fetch(`${API_BASE_PATH}${AUTHORS_ENDPOINT}`),
+		fetch(`${API_BASE_PATH}/${POSTS}`),
+		fetch(`${API_BASE_PATH}/${AUTHORS}`),
 	]);
 
 	try {

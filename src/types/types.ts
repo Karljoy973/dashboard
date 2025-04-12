@@ -22,23 +22,23 @@ export interface PostInterface {
     amount: number;
   }
   
+  
+  export type PostsData = {
+    id: number;
+    title: string;
+    body: string;
+    authorid: number;
+    datetime: string;
+    isliked: boolean;
+    comment_list_id: number[];
+  };
+  
+  export type AuthorData = {
+    id: number;
+    username: string;
+  };
 
 export type PostTableProps = Partial<{
 	limit: number;
 	title: string;
 }>;
-
-export type PostsData = {
-	id: number;
-	title: string;
-	body: string;
-	authorid: number;
-	datetime: string;
-	isliked: boolean;
-	comment_list_id: number[];
-};
-
-export type AuthorData = {
-	id: number;
-	username: string;
-};
